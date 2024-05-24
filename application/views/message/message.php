@@ -19,6 +19,83 @@ if (isset($_SESSION)) {
     <link rel="stylesheet" href="../assets/css/message/loading-bar.css">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	<style>
+		body {
+			background-color: #f5f5f5;
+		}
+		#main {
+			margin-top: 30px;
+		}
+		#owner_profile_details {
+			display: flex;
+			align-items: center;
+			background-color: #fff;
+			padding: 15px;
+			border-radius: 10px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+		}
+		#owner_avtar {
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			background-position: center;
+			background-size: cover;
+			position: relative;
+			margin-right: 15px;
+		}
+		#online {
+			width: 15px;
+			height: 15px;
+			background-color: #4caf50;
+			border-radius: 50%;
+			border: 2px solid #fff;
+			position: absolute;
+			bottom: 0;
+			right: 0;
+		}
+		#search_box_container {
+			margin-top: 20px;
+		}
+		#user_list {
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			padding: 15px;
+		}
+		#chatbox {
+			margin-top: 20px;
+			background-color: #fff;
+			border-radius: 10px;
+			box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+			padding: 15px;
+		}
+		.chatting_section #header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			border-bottom: 1px solid #e0e0e0;
+			padding-bottom: 10px;
+		}
+		#textBox_attachment_emoji_container {
+			display: flex;
+			align-items: center;
+		}
+		#text_box_message {
+			flex-grow: 1;
+			margin-right: 10px;
+		}
+		#sendButtonContainer button {
+			background-color: #4caf50;
+			color: white;
+			border: none;
+			border-radius: 50%;
+			padding: 10px 15px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+		#sendButtonContainer button:hover {
+			background-color: #45a049;
+		}
+	</style>
 	
 	<title>Chat Application ITTI</title>
 </head>
