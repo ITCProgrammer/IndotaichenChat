@@ -1,3 +1,4 @@
+<!-- TAMPILAN UNTUK PESAN YANG DISAMPING -->
 <?php
 $count = count($data);
 for ($i = 0; $i < $count; $i++) {
@@ -14,24 +15,23 @@ for ($i = 0; $i < $count; $i++) {
 						<h6 class='m-0' id='name'><?php echo $data[$i]['user_fname'] . " " . $data[$i]['user_lname'] ?></h6>
 						<p class='m-0' id="title">
 							<?php
-							$output = "";
-							for ($j = 0; $j < count($last_msg); $j++) {
-								if ($data[$i]['unique_id'] == $last_msg[$j]['sender_id']) {
+								$output = "";
+								for ($j = 0; $j < count($last_msg); $j++) {
+									if ($data[$i]['unique_id'] == $last_msg[$j]['sender_id']) {
 
-									$output = ($last_msg[$j]['message']);
-								} elseif ($data[$i]['unique_id'] == $last_msg[$j]['receiver_id']) {
+										$output = ($last_msg[$j]['message']);
+									} elseif ($data[$i]['unique_id'] == $last_msg[$j]['receiver_id']) {
 
-									$output = "You : " . $last_msg[$j]['message'];
-								} else {
-									// $output = "No message yet..";
-
+										$output = "You : " . $last_msg[$j]['message'];
+									} else {
+										// $output = "No message yet..";
+									}
 								}
-							}
-							if (strlen($output) > 20) {
-								echo substr($output, 0, 20) . "...";
-							} else {
-								echo $output;
-							}
+								if (strlen($output) > 20) {
+									echo substr($output, 0, 20) . "...";
+								} else {
+									echo $output;
+								}
 							?>
 						</p>
 					</div>

@@ -218,7 +218,7 @@ $(document).ready(function () {
 		const MAX_LENGTH = 200;
 		var len = document.getElementById('messageText').value.length;
 		if (len <= MAX_LENGTH) {
-			$('#count_text').html(`${len}/200`);
+			$('#count_text').html(`${len}/500`);
 		}
 	}
 	setInterval(getCharLength, 10);
