@@ -44,8 +44,7 @@ class Messagemodel extends CI_model{
 	public function getLastMessage($data){
 		$this->db->select('*');
 		$session_id = $_SESSION['uniqueid'];
-		$where = "sender_message_id = '$session_id' AND receiver_message_id = '$data' OR 
-		sender_message_id = '$data' AND receiver_message_id = '$session_id'";
+		$where = "sender_message_id = '$session_id' AND receiver_message_id = '$data' OR sender_message_id = '$data' AND receiver_message_id = '$session_id'";
 		$this->db->where($where);
 		$this->db->order_by('time', 'DESC');
 		$result = $this->db->get('user_messages', 1)->result_array();
