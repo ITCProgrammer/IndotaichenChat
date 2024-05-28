@@ -236,27 +236,48 @@ $(document).ready(function () {
 			}
 		})
 	});
-	//send message after button click
-	$('#send_message').click(function (e) {
-		var d = new Date(),
-			messageHour = d.getHours(),
-			messageMinute = d.getMinutes(),
-			messageSec = d.getSeconds(),
-			messageYear = d.getFullYear(),
-			messageDate = d.getDate(),
-			messageMonth = d.getMonth() + 1,
-			actualDateTime = `${messageYear}-${messageMonth}-${messageDate} ${messageHour}:${messageMinute}:${messageSec}`;
-		var message = $('#messageText').val();
-		var data = {
-			message: message,
-			datetime: actualDateTime,
-			uniq: unique_id
-		}
-		var jsonData = JSON.stringify(data);
-		$.post('sent', { data: jsonData }, function (data) {
-			$('#messageText').val('');
-		})
-	})
+	   // Menambahkan event listener pada textarea atau input pesan
+    $('#messageText').keydown(function (e) {
+        if (e.keyCode === 13 && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+	  // Menambahkan event listener pada textarea atau input pesan
+	  $('#messageText').keypress(function (e) { // DITAMBAHKAN
+        if (e.keyCode === 13 && !e.shiftKey) { // DIUBAH
+            e.preventDefault();
+            sendMessage();
+        }
+    }); //<-- Tambahkan ini
+
+    // Fungsi untuk mengirim pesan
+    function sendMessage() { // <-- Tambahkan ini
+        var d = new Date(), // <-- Tambahkan ini
+            messageHour = d.getHours(), // <-- Tambahkan ini
+            messageMinute = d.getMinutes(), // <-- Tambahkan ini
+            messageSec = d.getSeconds(), // <-- Tambahkan ini
+            messageYear = d.getFullYear(), // <-- Tambahkan ini
+            messageDate = d.getDate(), // <-- Tambahkan ini
+            messageMonth = d.getMonth() + 1, // <-- Tambahkan ini
+            actualDateTime = `${messageYear}-${messageMonth}-${messageDate} ${messageHour}:${messageMinute}:${messageSec}`; // <-- Tambahkan ini
+        var message = $('#messageText').val(); // <-- Tambahkan ini
+        var data = { // <-- Tambahkan ini
+            message: message, // <-- Tambahkan ini
+            datetime: actualDateTime, // <-- Tambahkan ini
+            uniq: unique_id // <-- Tambahkan ini
+        }; // <-- Tambahkan ini
+        var jsonData = JSON.stringify(data); // <-- Tambahkan ini
+        $.post('sent', { data: jsonData }, function (data) { // <-- Tambahkan ini
+            $('#messageText').val(''); // <-- Tambahkan ini
+        }); // <-- Tambahkan ini
+    } // <-- Tambahkan ini
+
+       // Event handler untuk tombol kirim pesan
+	   $('#send_message').click(function (e) { // DIUBAH
+        sendMessage();
+    });
+
 	// my details edit icon
 	$('#edit_icon').click(function () {
 		$('#main').addClass('blur');
