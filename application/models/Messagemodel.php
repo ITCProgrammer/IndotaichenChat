@@ -82,15 +82,18 @@ class Messagemodel extends CI_model{
 
 		return $res;
 	}
-	// Fungsi untuk menghapus chat yang sudah berumur 24 jam atau lebih
-    public function deleteExpiredChats() {
-        // Hitung waktu 24 jam yang lalu
-        $twentyFourHoursAgo = date('Y-m-d H:i:s', strtotime('-5 months'));
-
-        // Query untuk menghapus chat yang sudah berumur 24 jam atau lebih
-        $this->db->where('time <', $fiveMonthsAgo);
-        $this->db->delete('user_messages'); // Gantilah 'chat' dengan nama tabel chat Anda
-    }
+	
+	public function setMessageRead($senderId, $receiverId) {
+		// Query untuk mengubah status pesan menjadi "read" jika pesan tersebut belum dibaca dan dikirim oleh pengguna lain
+		$this->db->set('status', 'read');
+		$this->db->where('sender_message_id', $receiverId); // Pesan yang dikirim oleh pengguna lain
+		$this->db->where('receiver_message_id', $senderId); // Pesan yang diterima oleh pengguna
+		$this->db->where('status', 'unread'); // Pastikan hanya pesan yang belum dibaca yang diubah statusnya
+		$this->db->update('user_messages');
+	}
+	
+    
+	
 }
 
 

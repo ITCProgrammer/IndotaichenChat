@@ -78,14 +78,19 @@ class Message extends CI_controller{
         // Mendapatkan nama host komputer pengguna
         $kom = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 		$arr = array(
-			'time' => $jsonDecode['datetime'],
-			'sender_message_id' => $uniq,
-			'receiver_message_id' => $jsonDecode['uniq'],
-			'message' => $jsonDecode['message'],
-			'ip' => $ip,
-            'kom' => $kom
+			'time' 					=> $jsonDecode['datetime'],
+			'sender_message_id' 	=> $uniq,
+			'receiver_message_id' 	=> $jsonDecode['uniq'],
+			'message' 				=> $jsonDecode['message'],
+			'ip' 					=> $ip,
+            'kom' 					=> $kom,
+			'status' 				=> 'unread'
 		);
 			$this->Messagemodel->sentMessage($arr);
+			  // Set status pesan yang dibalas menjadi "read"
+			  $this->Messagemodel->setMessageRead($uniq, $jsonDecode['uniq']);
+
+			 
 		}
 	}
 	public function getMessage(){

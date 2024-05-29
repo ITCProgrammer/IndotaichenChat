@@ -25,32 +25,34 @@ class Authenticate extends CI_Controller{
 			$file_upload_name = $file_new_name.".".$extension;
 
 			//Data
-			$unique_id = substr(md5(microtime()), rand(0,25), 6);
-			$user_fname = $data['txt_fname'];
-			$user_lname = $data['txt_lname'];
-			$user_email = $data['txt_email'];
-			$user_pass = $data['txt_pass'];
-			$created_at = $data['created_at'];
-			$absen = $data['absen'];
-			$dpt = $data['dpt'];
-			$user_avtar = $file_upload_name;
-			$user_status = 'active';
-			$ip = $_SERVER['REMOTE_ADDR'];
-			$kom = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+			$unique_id  	= substr(md5(microtime()), rand(0,25), 6);
+			$user_fname 	= $data['txt_fname'];
+			$user_lname 	= $data['txt_lname'];
+			$user_email 	= $data['txt_email'];
+			$user_pass  	= $data['txt_pass'];
+			$created_at 	= $data['created_at'];
+			$absen      	= $data['absen'];
+			$dpt        	= $data['dpt'];
+			$user_avtar 	= $file_upload_name;
+			$user_status	= 'active';
+			$ip 			= $_SERVER['REMOTE_ADDR'];
+			$kom 			= gethostbyaddr($_SERVER['REMOTE_ADDR']);
+			$status 		='unread'
 
 			$data_arr = array(
-				'unique_id' => $unique_id,
-				'user_fname' => $user_fname,
-				'user_lname' => $user_lname,
-				'user_email' => $user_email,
-				'user_pass' => $user_pass,
-				'user_avtar' => $user_avtar,
-				'created_at'=> $created_at,
-				'user_status' => $user_status,
-				'absen' => $absen,
-				'dpt' => $dpt,
-				'ip' => $ip,
-				'kom' => $kom // Nama komputer pengguna
+				'unique_id' 	=> $unique_id,
+				'user_fname' 	=> $user_fname,
+				'user_lname'	=> $user_lname,
+				'user_email' 	=> $user_email,
+				'user_pass' 	=> $user_pass,
+				'user_avtar' 	=> $user_avtar,
+				'created_at'	=> $created_at,
+				'user_status' 	=> $user_status,
+				'absen' 		=> $absen,
+				'dpt' 			=> $dpt,
+				'ip' 			=> $ip,
+				'kom' 			=> $kom,
+				'status' 		=> $unread 
 
 			);
 			$email = $this->Auth->checkEmail($user_email);

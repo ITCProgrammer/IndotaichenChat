@@ -252,26 +252,26 @@ $(document).ready(function () {
     }); //<-- Tambahkan ini
 
     // Fungsi untuk mengirim pesan
-    function sendMessage() { // <-- Tambahkan ini
-        var d = new Date(), // <-- Tambahkan ini
-            messageHour = d.getHours(), // <-- Tambahkan ini
-            messageMinute = d.getMinutes(), // <-- Tambahkan ini
-            messageSec = d.getSeconds(), // <-- Tambahkan ini
-            messageYear = d.getFullYear(), // <-- Tambahkan ini
-            messageDate = d.getDate(), // <-- Tambahkan ini
-            messageMonth = d.getMonth() + 1, // <-- Tambahkan ini
-            actualDateTime = `${messageYear}-${messageMonth}-${messageDate} ${messageHour}:${messageMinute}:${messageSec}`; // <-- Tambahkan ini
-        var message = $('#messageText').val(); // <-- Tambahkan ini
-        var data = { // <-- Tambahkan ini
-            message: message, // <-- Tambahkan ini
-            datetime: actualDateTime, // <-- Tambahkan ini
-            uniq: unique_id // <-- Tambahkan ini
-        }; // <-- Tambahkan ini
-        var jsonData = JSON.stringify(data); // <-- Tambahkan ini
-        $.post('sent', { data: jsonData }, function (data) { // <-- Tambahkan ini
-            $('#messageText').val(''); // <-- Tambahkan ini
-        }); // <-- Tambahkan ini
-    } // <-- Tambahkan ini
+    function sendMessage() {
+        var d = new Date(),
+            messageHour = d.getHours(),
+            messageMinute = d.getMinutes(),
+            messageSec = d.getSeconds(),
+            messageYear = d.getFullYear(),
+            messageDate = d.getDate(),
+            messageMonth = d.getMonth() + 1,
+            actualDateTime = `${messageYear}-${messageMonth}-${messageDate} ${messageHour}:${messageMinute}:${messageSec}`;
+        var message = $('#messageText').val();
+        var data = {
+            message: message,
+            datetime: actualDateTime,
+            uniq: unique_id
+        };
+        var jsonData = JSON.stringify(data);
+        $.post('sent', { data: jsonData }, function (data) {
+            $('#messageText').val('');
+        });
+    }
 
        // Event handler untuk tombol kirim pesan
 	   $('#send_message').click(function (e) { // DIUBAH
