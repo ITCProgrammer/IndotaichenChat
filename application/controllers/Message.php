@@ -130,12 +130,6 @@ class Message extends CI_controller{
 		}
 	}
 
-	 // Fungsi untuk menghapus chat setelah 24 jam
-	 public function deleteExpiredChats() {
-        // Panggil fungsi dari model untuk menghapus chat yang sudah berumur 24 jam atau lebih
-        $this->Messagemodel->deleteExpiredChats();
-        echo "Chat yang sudah berumur 5 bulan atau lebih telah dihapus.";
-    }
 }
 
 

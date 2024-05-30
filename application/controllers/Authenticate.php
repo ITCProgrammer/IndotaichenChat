@@ -37,7 +37,7 @@ class Authenticate extends CI_Controller{
 			$user_status	= 'active';
 			$ip 			= $_SERVER['REMOTE_ADDR'];
 			$kom 			= gethostbyaddr($_SERVER['REMOTE_ADDR']);
-			$status 		='unread';
+			
 
 			$data_arr = array(
 				'unique_id' 	=> $unique_id,
